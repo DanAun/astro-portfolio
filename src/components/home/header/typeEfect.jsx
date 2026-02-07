@@ -7,9 +7,9 @@ const TypewriterComponent = () => {
       <Typewriter
         options={{
           strings: [
-            "Penetration Testing",
             "Network Security",
-            "Operational Technology", 
+            "Operational Technology",
+            "Penetration Testing",
             "Cloud Security",
             "CTF Development"
           ],
