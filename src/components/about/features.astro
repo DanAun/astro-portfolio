@@ -1,0 +1,29 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+import { FaShieldAlt, FaNetworkWired, FaServer } from "react-icons/fa"; 
+---
+<section class="site-container mt-14 mx-auto max-w-6xl px-4">
+  <h2
+    class="text-4xl font-bold flex flex-col items-center gap-6 text-center whitespace-nowrap text-white md:flex-row md:items-center md:text-end"
+  >
+    <span class="hidden h-1.5 grow rounded-lg drop-shadow-[2px_2px_0_#0debd8] bg-[#7836cf] md:block"></span>
+    <span class="drop-shadow-[2px_2px_0_#7836cf]">Expertise</span>
+  </h2>
+  <div class="mt-10 grid gap-6 md:grid-cols-3">
+    <ServiceCard
+      icon={FaShieldAlt}
+      title="Penetration Testing"
+      description="Identifying vulnerabilities and security weaknesses in networks, cloud infrastructures, and applications through comprehensive security assessments."
+    />
+    <ServiceCard
+      icon={FaNetworkWired}
+      title="Network Security"
+      description="Expertise in OT/IT network operations, monitoring, incident response, and implementing security best practices for critical infrastructure."
+    />
+    <ServiceCard
+      icon={FaServer}
+      title="Cloud & Container Security"
+      description="Securing cloud environments (Azure, AWS) and containerized applications. Research focus on Kubernetes security and supply chain attacks."
+    />
+  </div>
+</section>

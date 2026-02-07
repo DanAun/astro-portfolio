@@ -1,0 +1,37 @@
+---
+const githubUrl = "https://github.com/DanAun";
+const imageUrl = "/github.png";
+---
+<section class="mt-16 flex justify-center px-4">
+  <div
+    class="mx-auto max-h-80 w-full max-w-[1120px] overflow-hidden rounded-2xl bg-linear-to-r from-[#211355] to-[#12186e] text-white shadow-lg drop-shadow-[4px_4px_0_#7836cf]"
+  >
+    <div class="flex h-full flex-col items-center md:flex-row-reverse md:items-center">
+      <!-- GitHub Logo -->
+      <div class="flex h-full w-full shrink-0 items-center justify-center p-6 md:w-1/2 md:p-8">
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+          <img
+            src={imageUrl}
+            alt="GitHub Logo"
+            class="h-auto w-48 cursor-pointer object-contain transition hover:scale-105 md:w-56"
+          />
+        </a>
+      </div>
+      <!-- Text and Button -->
+      <div class="flex-1 p-6 text-center md:p-8 md:text-left">
+        <h3 class="text-3xl font-bold md:text-4xl">Check Out My GitHub!</h3>
+        <p class="mt-2 text-sm md:text-lg">
+          Explore my latest projects, contributions, and code repositories.
+        </p>
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-block rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
+        >
+          Go to GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

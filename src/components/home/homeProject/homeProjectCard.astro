@@ -1,0 +1,60 @@
+---
+import { HiArrowRight } from "react-icons/hi";
+export interface Props {
+  title: string;
+  image: string;
+  technologies: string[];
+  read: string;
+  code: string;
+}
+const { title, image, technologies, read, code } = Astro.props;
+
+// Check if links are valid (not # or empty)
+const isReadValid = read && read !== "#";
+const isCodeValid = code && code !== "#";
+---
+<div
+  class="group flex w-full max-w-md mx-auto flex-col overflow-hidden rounded-xl bg-gray-900 border border-none transition-all hover:scale-[1.015] drop-shadow-[4px_4px_0_#7836cf]"
+>
+  <img
+    src={image}
+    alt={`Project: ${title}`}
+    class="h-52 p-3 w-full object-cover rounded-2xl"
+  />
+  <div class="flex flex-col grow p-3">
+    <h3 class="text-lg font-semibold mb-2 text-white drop-shadow-[1px_1px_0_#7836cf]">{title}</h3>
+    <div class="flex flex-wrap gap-2 mb-4">
+      {
+        technologies.map((tech) => (
+          <span class="rounded-md bg-[#7836cf]/20 text-[#a27ed1] px-2 py-0.5 text-xs font-semibold">
+            {tech}
+          </span>
+        ))
+      }
+    </div>
+    <div class="mt-auto flex justify-between gap-3">
+      <a
+        href={isReadValid ? read : undefined}
+        class={`w-full text-center border py-1.5 rounded-md text-sm font-semibold transition-colors ${
+          isReadValid
+            ? 'border-[#7836cf] text-[#7836cf] hover:bg-[#7836cf] hover:text-gray-900 cursor-pointer' 
+            : 'border-gray-600 text-gray-600 cursor-not-allowed opacity-50'
+        }`}
+        {...(isReadValid ? { target: "_blank", rel: "noopener noreferrer" } : { 'aria-disabled': 'true' })}
+      >
+        Read
+      </a>
+      <a
+        href={isCodeValid ? code : undefined}
+        class={`w-full text-center border py-1.5 rounded-md text-sm font-semibold transition-colors ${
+          isCodeValid
+            ? 'border-[#7836cf] text-[#7836cf] hover:bg-[#7836cf] hover:text-gray-900 cursor-pointer' 
+            : 'border-gray-600 text-gray-600 cursor-not-allowed opacity-50'
+        }`}
+        {...(isCodeValid ? { target: "_blank", rel: "noopener noreferrer" } : { 'aria-disabled': 'true' })}
+      >
+        Code
+      </a>
+    </div>
+  </div>
+</div>

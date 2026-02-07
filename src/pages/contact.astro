@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/commons/hero/hero.astro";
+import ContactForm from "../components/contact/ContactForm.jsx";
+import { FaLinkedinIn, FaGithub} from "react-icons/fa6";
+
+const socialLinks = [
+  {
+    href: "https://www.linkedin.com/in/daniel-aunan",
+    label: "LinkedIn",
+    icon: FaLinkedinIn,
+  },
+  {
+    href: "https://github.com/DanAun",
+    label: "GitHub",
+    icon: FaGithub,
+  },
+];
+---
+
+<Layout title="Contact" description="Get in touch with Daniel Aunan">
+  <Hero title="Get In Touch" />
+
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Introduction -->
+      <div class="text-center mb-12">
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          I'm always interested in new opportunities, collaborations, and connecting with fellow security professionals and tech lovers. 
+          Feel free to reach out!
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-6 drop-shadow-[2px_2px_0_#7836cf]">
+            Send a Message
+          </h2>
+          <ContactForm client:visible />
+        </div>
+
+        <!-- Contact Info & Social Links -->
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-6 drop-shadow-[2px_2px_0_#7836cf]">
+            Connect With Me
+          </h2>
+
+          <!-- Social Links -->
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold text-white mb-4">Social Media</h3>
+            {
+              socialLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-4 p-4 bg-gray-900 rounded-xl hover:bg-gray-800 transition-all drop-shadow-[2px_2px_0_#7836cf] hover:drop-shadow-[4px_4px_0_#7836cf] group"
+                >
+                  <link.icon className="h-6 w-6 text-[#69c7c7] group-hover:text-[#7836cf] transition-colors" />
+                  <span class="text-white font-semibold">{link.label}</span>
+                </a>
+              ))
+            }
+          </div>
+
+          <!-- Location -->
+          <div class="mt-8 p-6 bg-gray-900 rounded-xl drop-shadow-[4px_4px_0_#7836cf]">
+            <h3 class="text-xl font-semibold text-white mb-2">Location</h3>
+            <p class="text-gray-300">Oslo, Norway</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
