@@ -1,0 +1,205 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/commons/hero/hero.astro";
+import Banner from "../../components/commons/banners/banner.astro";
+---
+
+<Layout title="Self-Hosted Media Server" description="Building a secure streaming platform from recycled hardware">
+  <Hero title="Self-Hosted Media Server" />
+  
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <div class="prose prose-invert max-w-none">
+      
+      <!-- Lead/Intro -->
+      <div class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[2px_2px_0_#7836cf]">
+          From Trash to Treasure: My Self-Hosted Streaming Adventure
+        </h1>
+        <p class="text-xl text-gray-300 leading-relaxed">
+          It all started with a laptop I found in the trash — broken screen, dust everywhere,
+          but surprisingly powerful under the hood. Instead of tossing it aside, I saw a challenge:
+          could I turn this forgotten machine into something valuable?
+        </p>
+      </div>
+
+      <!-- Main Image -->
+      <div class="mb-12 rounded-xl overflow-hidden drop-shadow-[4px_4px_0_#7836cf]">
+        <img 
+          src="/images/projects/jellyfin-logo.png" 
+          alt="Jellyfin Logo"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+
+      <!-- Section: First Boot -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          First Boot: Wrestling with Wi-Fi
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          With no Ethernet port, the first hurdle was just getting Ubuntu Server online.
+          I spent a while battling <code class="px-2 py-1 bg-gray-800 rounded text-[#69c7c7]">wpa_supplicant</code>, 
+          because setting up WiFi connectivity on a laptop with a half-broken screen is no easy task.
+          Later on I was able to acquire a USB-C Ethernet adapter made streaming far more stable.
+        </p>
+        <p class="text-gray-300 text-lg leading-relaxed">
+          Looking back, it hadn't occurred to me to use a USB-C Ethernet adapter until I came across one.
+          That tiny adapter made such a difference — it's often the simple solutions that work best.
+        </p>
+      </section>
+
+      <!-- Section: SSH Hardening -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          Locking the Doors: SSH Hardening
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          Exposing a server to the internet without care is like leaving your house unlocked.
+          I leaned heavily on <a href="https://sshaudit.com/" target="_blank" rel="noopener noreferrer" 
+          class="text-primary hover:text-secondary font-semibold underline">SSHaudit</a> to guide me.
+          Password logins were gone, replaced with keys. Weak ciphers like <code class="px-2 py-1 bg-gray-800 rounded text-[#69c7c7]">arcfour</code> and
+          <code class="px-2 py-1 bg-gray-800 rounded text-[#69c7c7]">cbc</code> were stripped away. Only strong modern ones remained,
+          such as <code class="px-2 py-1 bg-gray-800 rounded text-[#69c7c7]">chacha20-poly1305@openssh.com</code> and 
+          <code class="px-2 py-1 bg-gray-800 rounded text-[#69c7c7]">aes256-gcm@openssh.com</code>.
+        </p>
+        <div class="bg-gray-900 border-l-4 border-primary p-6 rounded-lg my-6">
+          <p class="text-gray-300 text-lg italic">
+            It was here I realized how dangerous defaults can be.
+            Even updated software carry legacy baggage due to compatibility and unless you need them you should remove them.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Jellyfin -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          Discovering Jellyfin
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          Installing Jellyfin was a turning point. Suddenly, this trash laptop was no longer just a
+          server — it was a private streaming platform.
+        </p>
+        
+        <!-- Jellyfin Screenshot -->
+        <div class="my-8 rounded-xl overflow-hidden">
+          <img 
+            src="/images/projects/jellyfin-ui.jpg" 
+            alt="Jellyfin dashboard interface"
+            class="w-full h-auto object-cover"
+          />
+          <p class="text-center text-gray-400 text-sm mt-3 italic">
+            The Jellyfin dashboard that made the project feel alive.
+          </p>
+        </div>
+
+        <p class="text-gray-300 text-lg leading-relaxed">
+          This was the "wow" moment: seeing a dead machine reborn with a purpose.
+        </p>
+      </section>
+
+      <!-- Section: TLS -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          TLS and the Joy of Automation
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          At first, I played with self-signed certificates, but the real breakthrough was
+          setting up Certbot with automatic renewal via <code class="px-2 py-1 bg-gray-800 rounded text-[#69c7c7]">systemd</code>.
+          Suddenly, security wasn't something I had to remember — it was just there, quietly doing its job.
+        </p>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          Later, moving behind Cloudflare not only added resilience thanks to WAF and DDoS protection but also
+          protected my server's IP address from being exposed.
+        </p>
+        <div class="bg-gray-900 border-l-4 border-secondary p-6 rounded-lg my-6">
+          <p class="text-gray-300 text-lg font-semibold">
+            The lesson? Automation is more than convenience — it's peace of mind.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Extras -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          Adding the Extras
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          With the basics solid, I couldn't resist: Sonarr, Radarr, and Prowlarr came next.
+          They automated media handling via Usenet (what else did you think? 😉).
+        </p>
+        <p class="text-gray-300 text-lg leading-relaxed">
+          The ecosystem grew organically — each tool taught me a little more about
+          networking, automation, and system monitoring.
+        </p>
+      </section>
+
+      <!-- Technologies Used -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          Technologies Used
+        </h2>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">Ubuntu Server</span>
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">Docker</span>
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">Jellyfin</span>
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">Certbot</span>
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">Cloudflare</span>
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">SSH Hardening</span>
+          <span class="px-4 py-2 bg-[#7836cf]/20 text-[#a27ed1] rounded-lg font-semibold">Systemd</span>
+        </div>
+      </section>
+
+      <!-- Key Learnings -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-[2px_2px_0_#7836cf]">
+          What I Learned
+        </h2>
+        <ul class="space-y-4 text-gray-300 text-lg">
+          <li class="flex items-start">
+            <span class="text-primary mr-3 text-2xl">•</span>
+            <span>Old hardware isn't worthless — it's an opportunity to learn and create something useful.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-primary mr-3 text-2xl">•</span>
+            <span>Defaults can be dangerous; hardening is important, don't blindly trust defaults.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-primary mr-3 text-2xl">•</span>
+            <span>Security and convenience can coexist — if you design for both.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="mb-12">
+        <div class="bg-gradient-to-r from-[#211355] to-[#12186e] p-8 rounded-xl drop-shadow-[4px_4px_0_#7836cf]">
+          <p class="text-gray-200 text-lg leading-relaxed">
+            In the end, I am really happy with my server. I use it regularly with friends to watch movies together. 
+            However it was more than just a media server project.
+            It was a reminder of why I love cybersecurity:
+            <span class="text-white font-semibold">finding the balance between building something useful and making it secure.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Back Button -->
+      <div class="mt-12 flex justify-center">
+        <a 
+          href="/projects" 
+          class="inline-block px-6 py-3 bg-primary hover:bg-secondary text-white font-semibold rounded-3xl transition-all duration-150 drop-shadow-[2px_2px_0_#0debd8] active:translate-y-0.5 active:drop-shadow-none"
+        >
+          ← Back to Projects
+        </a>
+      </div>
+
+    </div>
+  </article>
+
+  <Banner />
+</Layout>
+
+<style>
+  code {
+    font-family: 'Courier New', monospace;
+  }
+</style>

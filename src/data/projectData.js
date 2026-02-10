@@ -46,7 +46,7 @@ export const projects = [
       "Personal project setting up a self-hosted media server with automated downloads, streaming, and network configuration. Implemented using on privately hosted Linux Server with custom networking and security configurations.",
     image: mediaServerImg.src,
     technologies: ["Linux", "Docker", "Networking", "Self-hosting"],
-    read: "#",
+    read: "/projects/self-hosted-media-server",
     code: "#",
     category: ["systems"],
     highlighted: false,
